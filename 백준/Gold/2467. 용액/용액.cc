@@ -1,4 +1,3 @@
-#pragma warning (disable:4996)
 #include<iostream>
 #include<algorithm>
 using namespace std;
@@ -29,7 +28,7 @@ int main() {
 	else {
 		int front = 0;
 		int back = N - 1;
-		int min_front, min_back;
+		int min_front = front, min_back = back;
 		int mix;
 		bool flag = false;
 		while (front != back) {
