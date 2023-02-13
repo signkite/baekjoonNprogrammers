@@ -1,0 +1,11 @@
+-- 코드를 입력하세요
+SELECT date_format(SALES_DATE, "%Y-%m-%d"), PRODUCT_ID, USER_ID, SALES_AMOUNT
+from (
+    select SALES_DATE, PRODUCT_ID, null as USER_ID, SALES_AMOUNT
+    from OFFLINE_SALE
+    union all
+    select SALES_DATE, PRODUCT_ID, USER_ID, SALES_AMOUNT
+    from ONLINE_SALE
+    ) as a
+where SALES_DATE BETWEEN '2022-03-01' AND '2022-03-31'
+order by SALES_DATE, PRODUCT_ID, USER_ID
