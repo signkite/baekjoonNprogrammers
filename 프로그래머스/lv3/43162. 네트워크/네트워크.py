@@ -3,10 +3,6 @@ from collections import deque
 def solution(n, computers):
     answer = 0
     check = [False] * n
-    # 1번부터 연결된 애들 check
-    # bfs로 체크?
-    # False인 친구 발견 => 카운트 업
-    # 해당 친구로부터 연결된 애들 모두 True로 처리
     
     dq = deque()
     for com_num in range(n):
