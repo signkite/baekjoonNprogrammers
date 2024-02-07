@@ -1,34 +1,36 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
-public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(bf.readLine());
+class Main {
+    public static void main(String[] args) throws Exception {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
         int[][] paper = new int[100][100];
-        int x, y;
-        String[] line;
-        for (int i = 0; i < n; ++i) {
-            line = bf.readLine().split(" ");
-            x = Integer.parseInt(line[0]);
-            y = Integer.parseInt(line[1]);
+        int N = Integer.parseInt(br.readLine());
 
-            // 색종이를 붙인 곳의 좌표의 수를 증가시킨다
-            for (int j = 0; j < 10; ++j) {
-                for (int k = 0; k < 10; ++k) {
-                    paper[x + j][y + k]++;
+        String[] line;
+        for (int i = 0; i < N; ++i) {
+            line = br.readLine().split(" ");
+
+            int x = Integer.parseInt(line[0]);
+            int y = Integer.parseInt(line[1]);
+
+            for (int dx = 0; dx < 10; ++dx) {
+                for (int dy = 0; dy < 10; ++dy) {
+                    paper[x + dx][y + dy] = 1;
                 }
             }
         }
 
-        int answer = 0;
+        int area = 0;
         for (int i = 0; i < 100; ++i) {
             for (int j = 0; j < 100; ++j) {
-                if (paper[i][j] > 0) {
-                   answer++;
-                }
+                if (paper[i][j] == 1)
+                    area++;
             }
         }
 
-        System.out.println(answer);
+        System.out.println(area);
     }
 }
